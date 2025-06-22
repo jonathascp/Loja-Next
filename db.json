@@ -1,0 +1,17 @@
+{
+    "produtos": [
+        {
+            "id": 1,
+            "titulo": "Camisa Roxa",
+            "imagem": "https://acdn-us.mitiendanube.com/stores/002/241/196/products/teens-roxa-nova-0495680b7371aca30c17153612659762-1024-1024.jpg",
+            "preco": 29.90
+        },
+
+        {
+            "id": 2,
+            "titulo": "Tênis preto e branco",
+            "imagem": "https://cdnv2.moovin.com.br/valuti/imagens/produtos/det/tenis-vanscy-v1865-8b72b19d5c506f7e175438c398b77d1c.jpg",
+            "preco": 59.90
+        }
+    ]
+}

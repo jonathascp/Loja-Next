@@ -1,0 +1,40 @@
+.hr {
+    width: 95%;
+    text-align: center;
+    margin: auto;
+}
+
+.img_produto {
+    width: 100px;
+}
+
+.quantidade {
+    display: flex;
+    flex-direction: row;
+}
+
+.quantidade_button {
+    width: 25px;
+    cursor: pointer;
+    border: none;
+    color: #000000;
+    font-weight: bolder;
+    background: none;
+    font-size: 25px;
+
+}
+
+.quantidade_input {
+    width: 35px;
+    padding: 0;
+    text-align: start;
+    border: 1px solid lightgrey;
+    font-weight: bolder;
+}
+
+.closeBtn {
+    font-size: 1rem;
+    color: grey;
+    border: none;
+    background: none;
+}

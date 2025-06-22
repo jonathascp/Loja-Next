@@ -1,95 +1,51 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client"
+import Card from "@/components/Card/Card.js";
+import { useState, useEffect } from "react";
+import { useCarrinho } from "@/contexts/CarrinhoContext";
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+  const [dados,setDados] = useState([]);
+
+  const listaDeProdutos = [{
+            "id": 1,
+            "titulo": "Camisa Roxa",
+            "imagem": "https://acdn-us.mitiendanube.com/stores/002/241/196/products/teens-roxa-nova-0495680b7371aca30c17153612659762-1024-1024.jpg",
+            "preco": 29.90
+        },
+
+        {
+            "id": 2,
+            "titulo": "Tênis preto e branco",
+            "imagem": "https://cdnv2.moovin.com.br/valuti/imagens/produtos/det/tenis-vanscy-v1865-8b72b19d5c506f7e175438c398b77d1c.jpg",
+            "preco": 59.90
+        }];
+
+        useEffect(() => {
+            setDados(listaDeProdutos);
+          },[])
+        
+
+  const {conversorMoeda} = useCarrinho();
+
+  return (
+    <>
+      <h1 className="h1 text-center">Bem vindo a nossa loja</h1>
+      <h3 className="text-black-50 text-center">Fique a vontade!</h3>
+      <div className="container border border-secundary">
+        <h1>Produtos</h1>
+        <div className="d-flex flex-row gap-3">
+          {dados.map((produto) => (
+            <Card
+              key={produto.id}
+              imagem={produto.imagem}
+              titulo={produto.titulo}
+              preco={conversorMoeda(produto.preco)}
+              elemento={produto}
             />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+          ))}
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+    </>
   );
 }
